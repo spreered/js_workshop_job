@@ -72,7 +72,7 @@ $ npx http-server .
 
 目標: 發布成果到 GitHub Page 上
 - [ ] 發布自己的 proxy server 到 heroku 上
-  - 你可以直接 fork 本次 [proxy server 的 repo](https://github.com/spreered/js-_workshop-server)
+  - 你可以直接 fork 本次 [proxy server 的 repo](https://github.com/spreered/js-workshop-server)
 - [ ] 發布頁面到 GitHub Page 上
 - [ ] 調整 proxy server 的 CORS 設定
   - 請使用[rack-cors](https://github.com/cyu/rack-cors) 來設定 CORS
