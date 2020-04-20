@@ -20,6 +20,15 @@
   - 自己 merge PR
 5. 記得回到 local 端 `git pull remote master` 更新本地端 master branch
 
+如果要開啟本地端靜態伺服器
+
+```
+$ npx http-server .
+```
+
+可以啟用 `http://localhost:8080`
+
+
 ## 任務清單
 
 ### Task 1
