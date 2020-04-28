@@ -126,6 +126,7 @@
   </section>
 
   <script>
+    // task1
     let burger = document.querySelector('#navbar-burger')
     let menu = document.querySelector('#navbar-menu')
 
@@ -133,6 +134,31 @@
       e.target.classList.toggle("is-active");
       menu.classList.toggle("is-active");
     },false)
+
+    // task2
+
+    let form = document.forms[0]
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      let jobDescription = document.querySelector("input[name=description]").value
+      let location = document.querySelector("input[name=location]").value
+      let fullTime = document.querySelector("input[name=full_time]").checked
+
+      let request = `
+      https://still-spire-37210.herokuapp.com/positions.json?description=${jobDescription}&location=${location}&full_time=${fullTime}
+      `
+
+      fetch(request)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(myJson) {
+          console.log(myJson);
+        });
+    })
+
+
 
   </script>
 
