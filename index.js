@@ -1,5 +1,11 @@
 let navbar = document.getElementById("navbar-menu")
 let burger = document.getElementById("navbar-burger")
+let next = document.querySelector("a.pagination-next")
+let container = document.getElementById("job-pannel")
+let url
+let page = 2
+
+window.onload = jobGet
 
 burger.onclick = function() {
   list = navbar.classList
@@ -17,11 +23,38 @@ let submit = form.querySelector('input[type=submit]')
 
 submit.onclick = function(eve) {
   eve.preventDefault()
+  jobGet()
+}
+
+next.onclick = function(eve) {
+  eve.preventDefault() 
+  axiosGet(url + `&page=${page++}`)
+}
+
+
+function axiosGet(url) {
+  let axiosData = []
+  axios.get(url)
+       .then(function(resp) {
+          if(resp.data.length === 50){
+            next.removeAttribute('disabled')
+          }else if(!next.hasAttribute('disabled')){
+            next.setAttribute('disabled',null)
+          }
+          for(data of resp.data){
+            axiosData.push(formatHTML(data))
+          }
+          container.innerHTML = container.innerHTML + axiosData.join()
+        })
+}
+
+function jobGet() {
+  page = 2
   let description = form.querySelector("input[name=description]").value
   let location = form.querySelector("input[name=location]").value
   let full_time = form.querySelector("input[name=full_time]").checked
-  let url = "https://still-spire-37210.herokuapp.com/positions.json?"
-  let container = document.getElementById("job-pannel")
+  url = "https://still-spire-37210.herokuapp.com/positions.json?"
+  
   let url_add = []
   
   if(description.length > 0){
@@ -40,16 +73,11 @@ submit.onclick = function(eve) {
   }
 
   url += url_add.join("&")
-  let res = []
-
-  axios.get(url)
-       .then(function(resp) {
-          for(data of resp.data){
-            res.push(formatHTML(data))
-          }
-          container.innerHTML = res.join()
-      })
+  container.innerHTML = ''
+  axiosGet(url)
 }
+
+      
 
 function formatHTML(elem){
   return `
