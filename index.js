@@ -2,53 +2,29 @@ let navbar = document.getElementById("navbar-menu")
 let burger = document.getElementById("navbar-burger")
 let next = document.querySelector("a.pagination-next")
 let container = document.getElementById("job-pannel")
+let form = document.getElementById("search-job")
+let submit = form.querySelector('input[type=submit]')
 let url
 let page = 2
 
 window.onload = jobGet
 
 burger.onclick = function() {
-  list = navbar.classList
-  if(list.contains("is-active")){
-    list.remove("is-active")
-    burger.classList.remove("is-active")
-  }else{
-    list.add("is-active")
-    burger.classList.add("is-active")
-  }
-}
 
-let form = document.getElementById("search-job")
-let submit = form.querySelector('input[type=submit]')
+  navbar.classList.toggle("is-active")
+  burger.classList.toggle("is-active")
+
+}
 
 submit.onclick = function(eve) {
+
   eve.preventDefault()
   jobGet()
-}
 
-next.onclick = function(eve) {
-  eve.preventDefault() 
-  axiosGet(url + `&page=${page++}`)
-}
-
-
-function axiosGet(url) {
-  let axiosData = []
-  axios.get(url)
-       .then(function(resp) {
-          if(resp.data.length === 50){
-            next.removeAttribute('disabled')
-          }else if(!next.hasAttribute('disabled')){
-            next.setAttribute('disabled',null)
-          }
-          for(data of resp.data){
-            axiosData.push(formatHTML(data))
-          }
-          container.innerHTML = container.innerHTML + axiosData.join()
-        })
 }
 
 function jobGet() {
+
   page = 2
   let description = form.querySelector("input[name=description]").value
   let location = form.querySelector("input[name=location]").value
@@ -57,29 +33,48 @@ function jobGet() {
   
   let url_add = []
   
-  if(description.length > 0){
-    console.log('hi1')
+  if(description){
     url_add.push("description=" + description.replace(' ','+'))
   }
 
-  if(location.length > 0){
-    console.log('hi2')
+  if(location){
     url_add.push("location=" + location.replace(' ','+'))
   }
 
   if(full_time){
-    console.log('hi3')
     url_add.push("full_time=true")
   }
 
   url += url_add.join("&")
   container.innerHTML = ''
   axiosGet(url)
+
 }
 
-      
+next.onclick = function(eve) {
+
+  eve.preventDefault() 
+  axiosGet(url + `&page=${page++}`)
+
+}
+
+function axiosGet(url) {
+  axios.get(url)
+       .then(function(resp) {
+          if(resp.data.length === 50){
+            next.removeAttribute('disabled')
+          }else if(!next.hasAttribute('disabled')){
+            next.setAttribute('disabled',null)
+          }
+          for(data of resp.data){
+            container.innerHTML += formatHTML(data)
+          }
+        })
+
+}
 
 function formatHTML(elem){
+
   return `
   <tr>
     <td>
