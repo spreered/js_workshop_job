@@ -73,21 +73,21 @@
             <div class="field">
               <label class="label" >Job Description</label>
               <div class="control has-icons-left">
-                <input class="input" name="description" type="text" placeholder="Filter by title, benefits, companies, experties">
+                <input class="input" id="description" name="description" type="text" placeholder="Filter by title, benefits, companies, experties">
                 <span class="icon is-small is-left"><i class="fas fa-clipboard"></i></span>
               </div>
             </div>
             <div class="field">
               <label class="label" >Location</label>
               <div class="control has-icons-left">
-                <input class="input" name="location" type="text" placeholder="Fiter by city, state, zip code or country">
+                <input class="input" id="locate" name="location" type="text" placeholder="Fiter by city, state, zip code or country">
                 <span class="icon is-smal is-left"><i class="fas fa-globe"></i></span>
               </div>
             </div>
             <div class="field">
               <div class="control">
                 <label class="checkbox has-text-weight-semibold">
-                  <input type="checkbox" name="full_time" value="full_time">
+                  <input type="checkbox" id="full_time" name="full_time" value="full_time">
                   Full time only
                 </label>
               </div>
@@ -126,6 +126,7 @@
   </section>
 
   <script src="index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!-- <script src="job.js"></script> -->
 </body>
 </html>
