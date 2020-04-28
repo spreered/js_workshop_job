@@ -59,16 +59,22 @@ next.onclick = function(eve) {
 }
 
 function axiosGet(url) {
+  next.setAttribute('disabled',null)
+  next.innerHTML = "Wait..."
   axios.get(url)
        .then(function(resp) {
-          if(resp.data.length === 50){
-            next.removeAttribute('disabled')
-          }else if(!next.hasAttribute('disabled')){
-            next.setAttribute('disabled',null)
-          }
+          
           for(data of resp.data){
             container.innerHTML += formatHTML(data)
           }
+          if(resp.data.length === 50){
+            next.removeAttribute('disabled')
+            next.innerHTML = "Next page"
+          }else{
+            next.setAttribute('disabled',null)
+            next.innerHTML = "Done."
+          }
+          
         })
 
 }
