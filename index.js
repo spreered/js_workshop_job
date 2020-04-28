@@ -42,7 +42,7 @@ function jobGet() {
   }
 
   if(full_time){
-    url_add.push("full_time=true")
+    url_add.push("full_time=on")
   }
 
   url += url_add.join("&")
