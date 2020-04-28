@@ -1,131 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <style>
-    table h4{
-      font-weight: bold;
-    }
-    table.positionlist p.source{
-      font-size:12px;
-    }
-    table.positionlist p.source a.company {
-      color: #999;
-      text-decoration: none;
-    } 
-    table.positionlist p.source .fulltime {
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <style>
+      table h4 {
+        font-weight: bold;
+      }
+      table.positionlist p.source {
+        font-size: 12px;
+      }
+      table.positionlist p.source a.company {
+        color: #999;
+        text-decoration: none;
+      }
+      table.positionlist p.source .fulltime {
         color: #1d9a00;
-    }
-    table.positionlist .meta {
-      width: 1%;
-      font-size: 12px;
-      white-space: nowrap;
-      padding-left: 30px;
-    }
-    table.positionlist .meta span {
-      display: block;
-      text-align: right;
-      color: #666;
-    }
-    .m-0-auto{
-      margin: 0 auto;
-    }
-  </style>
-</head>
-<body>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="container">
-
-      <div class="navbar-brand">
-        <a class="navbar-item is-size-4 has-text-weight-semibold" href="https://bulma.io">
-          GitHub Job
-        </a>
-
-        <a role="button" id="navbar-burger" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="navbar-menu" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item">
-            Discover
+      }
+      table.positionlist .meta {
+        width: 1%;
+        font-size: 12px;
+        white-space: nowrap;
+        padding-left: 30px;
+      }
+      table.positionlist .meta span {
+        display: block;
+        text-align: right;
+        color: #666;
+      }
+      .m-0-auto {
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>拉拉拉拉拉拉</h1>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a
+            class="navbar-item is-size-4 has-text-weight-semibold"
+            href="https://bulma.io"
+          >
+            GitHub Job
           </a>
-          <a class="navbar-item">
-            Favorite
+
+          <a
+            role="button"
+            id="navbar-burger"
+            class="navbar-burger burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbar-menu"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
           </a>
         </div>
-      </div>
-    </div>
-  </nav>
 
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-3">
-          <form id="search-job" action="#">
-            <div class="field">
-              <label class="label" >Job Description</label>
-              <div class="control has-icons-left">
-                <input class="input" name="description" type="text" placeholder="Filter by title, benefits, companies, experties">
-                <span class="icon is-small is-left"><i class="fas fa-clipboard"></i></span>
-              </div>
-            </div>
-            <div class="field">
-              <label class="label" >Location</label>
-              <div class="control has-icons-left">
-                <input class="input" name="location" type="text" placeholder="Fiter by city, state, zip code or country">
-                <span class="icon is-smal is-left"><i class="fas fa-globe"></i></span>
-              </div>
-            </div>
-            <div class="field">
-              <div class="control">
-                <label class="checkbox has-text-weight-semibold">
-                  <input type="checkbox" name="full_time" value="full_time">
-                  Full time only
-                </label>
-              </div>
-            </div> 
-            <div class="field is-grouped is-grouped-right">
-              <div class="control">
-                <input type="submit" value="Search" class="button is-light has-text-weight-semibold"/>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="column">
-          <table class="table is-fullwidth positionlist is-loading">
-            <tbody id="job-pannel">
-              <tr>
-                <td>
-                  <h4><a href="https://jobs.github.com/positions/850281e8-4f0f-4952-88e4-ddf121e77188">Senior Python / C++ Developer (Electronics field)</a></h4>
-                  <p class="source">
-                  <a class="company" href="https://jobs.github.com/companies/gemeente-amsterdam">Gemeente Amsterdam</a>
-                  –
-                  <strong class="fulltime">Full Time</strong>
-                  </p>
-                </td>
-                <td class="meta">
-                  <span class="location">Amsterdam</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <nav class="pagination" role="navigation" aria-label="pagination">
-            <a class="pagination-next m-0-auto" disabled>Next page</a>
-          </nav>
+        <div id="navbar-menu" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item">
+              Discover
+            </a>
+            <a class="navbar-item">
+              Favorite
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- <script src="index.js"></script> -->
-  <!-- <script src="job.js"></script> -->
-</body>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-3">
+            <form id="search-job" action="#">
+              <div class="field">
+                <label class="label">Job Description</label>
+                <div class="control has-icons-left">
+                  <input
+                    class="input"
+                    name="description"
+                    type="text"
+                    placeholder="Filter by title, benefits, companies, experties"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-clipboard"></i
+                  ></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Location</label>
+                <div class="control has-icons-left">
+                  <input
+                    class="input"
+                    name="location"
+                    type="text"
+                    placeholder="Fiter by city, state, zip code or country"
+                  />
+                  <span class="icon is-smal is-left"
+                    ><i class="fas fa-globe"></i
+                  ></span>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox has-text-weight-semibold">
+                    <input type="checkbox" name="full_time" value="full_time" />
+                    Full time only
+                  </label>
+                </div>
+              </div>
+              <div class="field is-grouped is-grouped-right">
+                <div class="control">
+                  <input
+                    type="submit"
+                    value="Search"
+                    class="button is-light has-text-weight-semibold"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="column">
+            <table class="table is-fullwidth positionlist is-loading">
+              <tbody id="job-pannel">
+                <tr>
+                  <td>
+                    <h4>
+                      <a
+                        href="https://jobs.github.com/positions/850281e8-4f0f-4952-88e4-ddf121e77188"
+                        >Senior Python / C++ Developer (Electronics field)</a
+                      >
+                    </h4>
+                    <p class="source">
+                      <a
+                        class="company"
+                        href="https://jobs.github.com/companies/gemeente-amsterdam"
+                        >Gemeente Amsterdam</a
+                      >
+                      –
+                      <strong class="fulltime">Full Time</strong>
+                    </p>
+                  </td>
+                  <td class="meta">
+                    <span class="location">Amsterdam</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <nav class="pagination" role="navigation" aria-label="pagination">
+              <a class="pagination-next m-0-auto" disabled>Next page</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <script src="index.js"></script> -->
+    <!-- <script src="job.js"></script> -->
+  </body>
 </html>
