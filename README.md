@@ -51,6 +51,7 @@ $ npx http-server .
   - 因為 GitHub Job api 有設定 CORS，助教會在上課中另外提供 no CORS 的 proxy API
   - xhr 工具可以任選，如果要使用 axios 或 jQuery 請自行在專案內引入
   - 取得的結果直接 console.log 印出即可
+  - note: github api 說明有誤，應該是要給 `full__time=on`
 
 ### Task 3
 
