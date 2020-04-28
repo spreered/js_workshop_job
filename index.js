@@ -1,4 +1,4 @@
-console.log('lalalalala');
+// console.log('lalalalala');
 
 let ham = document.querySelector('#navbar-burger')
 var menu = document.querySelector('#navbar-menu')
