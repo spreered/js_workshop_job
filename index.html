@@ -52,7 +52,7 @@
         </a>
       </div>
 
-      <div id="navbar-menu" class="navbar-menu">
+      <div id="navbar-menu" class="navbar-menu ">
         <div class="navbar-start">
           <a class="navbar-item">
             Discover
@@ -124,6 +124,17 @@
       </div>
     </div>
   </section>
+
+  <script>
+    let burger = document.querySelector('#navbar-burger')
+    let menu = document.querySelector('#navbar-menu')
+
+    burger.addEventListener("click", function(e){
+      e.target.classList.toggle("is-active");
+      menu.classList.toggle("is-active");
+    },false)
+
+  </script>
 
   <!-- <script src="index.js"></script> -->
   <!-- <script src="job.js"></script> -->
