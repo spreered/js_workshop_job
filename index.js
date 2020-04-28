@@ -17,7 +17,7 @@ form.addEventListener('submit',function(){
   event.preventDefault()
   return false
 })
-let html2 = fetch('https://still-spire-37210.herokuapp.com/positions.json')
+fetch('https://still-spire-37210.herokuapp.com/positions.json')
   .then( (resp) => {
     console.log(resp.json())
   })
