@@ -19,7 +19,10 @@ form.addEventListener('submit',function(){
 })
 fetch('https://still-spire-37210.herokuapp.com/positions.json')
   .then( (resp) => {
-    console.log(resp.json())
+    return resp.json()
+  })
+  .then( data => {
+    console.log(data)
   })
 
 
