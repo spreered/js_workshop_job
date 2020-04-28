@@ -52,6 +52,7 @@ $(document).ready(() => {
                 response.data.map(x => {
                     $('#job-pannel').append(toPostHtml(x))
                 })
+
             })
 
         function toPostHtml(jsn) {
