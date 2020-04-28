@@ -23,9 +23,15 @@ $(document).ready(() => {
     var search = form.search
 
     search.addEventListener("click", searchJson);
+    search.onclick = function() {
+        $('#job-pannel').empty()
+    }
 
     function searchJson(pageNow) {
         event.preventDefault();
+
+        // $('#job-pannel').empty()
+
         let keyworddDescription = form.description.value
         let keywordLocation = form.location.value
         let keywordFulltime = form.full_time.checked ? "Full Time" : ""
@@ -49,11 +55,9 @@ $(document).ready(() => {
             })
 
         function toPostHtml(jsn) {
-            test = test + 1
             return `
                 <tr>
                     <td>
-                    <p>${test}</p>
                         <h4><a href=" ${jsn.url}">${jsn.title}</a></h4>
                         <p class="source">
                             <a class="company" href="${jsn.company_url}">${jsn.company}</a> –

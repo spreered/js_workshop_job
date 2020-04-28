@@ -23,8 +23,13 @@ $(document).ready(function () {
   var search = form.search;
   search.addEventListener("click", searchJson);
 
+  search.onclick = function () {
+    $('#job-pannel').empty();
+  };
+
   function searchJson(pageNow) {
-    event.preventDefault();
+    event.preventDefault(); // $('#job-pannel').empty()
+
     var keyworddDescription = form.description.value;
     var keywordLocation = form.location.value;
     var keywordFulltime = form.full_time.checked ? "Full Time" : "";
@@ -47,8 +52,7 @@ $(document).ready(function () {
     });
 
     function toPostHtml(jsn) {
-      test = test + 1;
-      return "\n                <tr>\n                    <td>\n                    <p>".concat(test, "</p>\n                        <h4><a href=\" ").concat(jsn.url, "\">").concat(jsn.title, "</a></h4>\n                        <p class=\"source\">\n                            <a class=\"company\" href=\"").concat(jsn.company_url, "\">").concat(jsn.company, "</a> \u2013\n                            <strong class=\"fulltime\">Full Time</strong>\n                        </p>\n                    </td>\n                    <td class=\"meta\">\n                        <span class=\"location\">").concat(jsn.location, "</span>\n                    </td>\n                </tr>\n                ");
+      return "\n                <tr>\n                    <td>\n                        <h4><a href=\" ".concat(jsn.url, "\">").concat(jsn.title, "</a></h4>\n                        <p class=\"source\">\n                            <a class=\"company\" href=\"").concat(jsn.company_url, "\">").concat(jsn.company, "</a> \u2013\n                            <strong class=\"fulltime\">Full Time</strong>\n                        </p>\n                    </td>\n                    <td class=\"meta\">\n                        <span class=\"location\">").concat(jsn.location, "</span>\n                    </td>\n                </tr>\n                ");
     }
   }
 });
