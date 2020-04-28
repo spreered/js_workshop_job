@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script defer src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
     <script defer src="js/index.js"></script>
     <style>
         table h4 {
@@ -78,7 +80,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-3">
-                    <form id="search-job" action="#">
+                    <form id="search-job" action="#" name="search-job">
                         <div class="field">
                             <label class="label">Job Description</label>
                             <div class="control has-icons-left">
@@ -103,7 +105,7 @@
                         </div>
                         <div class="field is-grouped is-grouped-right">
                             <div class="control">
-                                <input type="submit" value="Search" class="button is-light has-text-weight-semibold" />
+                                <input name="search" type="submit" value="Search" class="button is-light has-text-weight-semibold" />
                             </div>
                         </div>
                     </form>
