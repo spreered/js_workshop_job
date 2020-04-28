@@ -9,7 +9,7 @@ $(document).ready(() => {
         menuBody.classList.toggle("is-active")
     }
 
-    // task2
+    // task2.task3
 
     var form = document.forms["search-job"]
     var search = form.search
@@ -26,7 +26,26 @@ $(document).ready(() => {
 
         axios.get(url)
             .then(function(response) {
-                console.log(response.data);
+                response.data.map(x => {
+                    $('#job-pannel').append(toPostHtml(x))
+                })
             })
+
+        function toPostHtml(jsn) {
+            return `
+                <tr>
+                    <td>
+                        <h4><a href=" ${jsn.url}">${jsn.title}</a></h4>
+                        <p class="source">
+                            <a class="company" href="${jsn.company_url}">${jsn.company}</a> –
+                            <strong class="fulltime">Full Time</strong>
+                        </p>
+                    </td>
+                    <td class="meta">
+                        <span class="location">${jsn.location}</span>
+                    </td>
+                </tr>
+                `;
+        }
     }
 })

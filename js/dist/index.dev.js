@@ -9,7 +9,7 @@ $(document).ready(function () {
   function menuRWD() {
     this.classList.toggle("is-active");
     menuBody.classList.toggle("is-active");
-  } // task2
+  } // task2.task3
 
 
   var form = document.forms["search-job"];
@@ -24,7 +24,13 @@ $(document).ready(function () {
     console.log(keywordFulltime);
     var url = "https://still-spire-37210.herokuapp.com/positions.json?description=".concat(keyworddDescription, "&location=").concat(keywordLocation, "&type=").concat(keywordFulltime, " ");
     axios.get(url).then(function (response) {
-      console.log(response.data);
+      response.data.map(function (x) {
+        $('#job-pannel').append(toPostHtml(x));
+      });
     });
+
+    function toPostHtml(jsn) {
+      return "\n                <tr>\n                    <td>\n                        <h4><a href=\" ".concat(jsn.url, "\">").concat(jsn.title, "</a></h4>\n                        <p class=\"source\">\n                            <a class=\"company\" href=\"").concat(jsn.company_url, "\">").concat(jsn.company, "</a> \u2013\n                            <strong class=\"fulltime\">Full Time</strong>\n                        </p>\n                    </td>\n                    <td class=\"meta\">\n                        <span class=\"location\">").concat(jsn.location, "</span>\n                    </td>\n                </tr>\n                ");
+    }
   }
 });
