@@ -52,9 +52,11 @@ function jobGet() {
 }
 
 next.onclick = function(eve) {
-
-  eve.preventDefault() 
-  axiosGet(url + `&page=${page++}`)
+  
+  if(!next.hasAttribute("disabled")){
+    eve.preventDefault() 
+    axiosGet(url + `&page=${page++}`)
+  }
 
 }
 
@@ -63,16 +65,20 @@ function axiosGet(url) {
   next.innerHTML = "Wait..."
   axios.get(url)
        .then(function(resp) {
-          
-          for(data of resp.data){
-            container.innerHTML += formatHTML(data)
-          }
-          if(resp.data.length === 50){
-            next.removeAttribute('disabled')
-            next.innerHTML = "Next page"
-          }else{
-            next.setAttribute('disabled',null)
-            next.innerHTML = "Done."
+          try{
+            for(data of resp.data){
+              container.innerHTML += formatHTML(data)
+            }
+            if(resp.data.length === 50){
+              next.removeAttribute('disabled')
+              next.innerHTML = "Next page"
+            }else{
+              next.setAttribute('disabled',null)
+              next.innerHTML = "Done."
+            }
+          }catch(exception){
+            console.log("An error occur! Try again.")
+            axiosGet(url)
           }
           
         })
