@@ -102,19 +102,7 @@
         <div class="column">
           <table class="table is-fullwidth positionlist is-loading">
             <tbody id="job-pannel">
-              <tr>
-                <td>
-                  <h4><a href="https://jobs.github.com/positions/850281e8-4f0f-4952-88e4-ddf121e77188">Senior Python / C++ Developer (Electronics field)</a></h4>
-                  <p class="source">
-                  <a class="company" href="https://jobs.github.com/companies/gemeente-amsterdam">Gemeente Amsterdam</a>
-                  –
-                  <strong class="fulltime">Full Time</strong>
-                  </p>
-                </td>
-                <td class="meta">
-                  <span class="location">Amsterdam</span>
-                </td>
-              </tr>
+              
             </tbody>
           </table>
           <nav class="pagination" role="navigation" aria-label="pagination">
@@ -136,7 +124,7 @@
     },false)
 
     // task2
-
+    // task3
     let form = document.forms[0]
 
     form.addEventListener("submit", function(e){
@@ -148,18 +136,38 @@
       let request = `
       https://still-spire-37210.herokuapp.com/positions.json?description=${jobDescription}&location=${location}&full_time=${fullTime}
       `
-
+      let table = document.querySelector("table")
+      
       fetch(request)
         .then(function(response) {
           return response.json();
         })
         .then(function(myJson) {
           console.log(myJson);
-        });
+          let tableContent = document.querySelector("#job-pannel")
+          tableContent.innerHTML = ""
+          myJson.map(function(data){
+            tableContent.innerHTML += getTemplate(data)
+          })
+        })
+       
+      function getTemplate(data){
+        return`
+        <tr>
+          <td>
+            <h4><a href="${data.url}">${data.title}</a></h4>
+            <p class="source">
+              <a class="company" href="https://jobs.github.com/companies/gemeente-amsterdam">${data.company}</a>–
+                <strong class="fulltime">${data.type}</strong>
+              </p>
+          </td>
+          <td class="meta">
+            <span class="location">${data.location}</span>
+          </td>
+        </tr>
+        `
+      }
     })
-
-
-
   </script>
 
   <!-- <script src="index.js"></script> -->
