@@ -47,6 +47,7 @@ $ npx http-server .
 - [ ] 使用專案內的表單來組出正確的 request uri
   - 左側的表單上有三個 input 欄位，分別對應到 api 的 param `description` `location` `full_time`
   - 在點擊 `Search` 按鈕後，可以在表單上取得 input 內容並且組合成正確的 request uri ( 例如 `https://jobs.github.com/position.json?description=ruby&location=new york&full_time=true` )
+  (https://still-spire-37210.herokuapp.com/positions.json)
 - [ ] 使用 fetch_ api / axios / jQuery ajax 發送 request 
   - 因為 GitHub Job api 有設定 CORS，助教會在上課中另外提供 no CORS 的 proxy API
   - xhr 工具可以任選，如果要使用 axios 或 jQuery 請自行在專案內引入
