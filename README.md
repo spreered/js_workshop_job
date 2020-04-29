@@ -1,5 +1,7 @@
 # ASTRO Camp JavaScript Workshop - 5xJob
 
+已發佈頁面，詳請：https://koten0224.github.io/js_workshop_job/
+
  [GitHub Job API](https://jobs.github.com/api) 作為操作資料，以 [GitHub Job](https://jobs.github.com/) 為參考來實作純前端頁面
 
 請學員依序完成以下任務清單來達成目標
