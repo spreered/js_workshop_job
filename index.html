@@ -1,176 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
+  <head>
+    <meta charset="UTF-8">
+    <title>GitHub Job</title>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <style>
-    table h4{
-      font-weight: bold;
-    }
-    table.positionlist p.source{
-      font-size:12px;
-    }
-    table.positionlist p.source a.company {
-      color: #999;
-      text-decoration: none;
-    } 
-    table.positionlist p.source .fulltime {
-        color: #1d9a00;
-    }
-    table.positionlist .meta {
-      width: 1%;
-      font-size: 12px;
-      white-space: nowrap;
-      padding-left: 30px;
-    }
-    table.positionlist .meta span {
-      display: block;
-      text-align: right;
-      color: #666;
-    }
-    .m-0-auto{
-      margin: 0 auto;
-    }
-  </style>
-</head>
-<body>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="container">
-
-      <div class="navbar-brand">
-        <a class="navbar-item is-size-4 has-text-weight-semibold" href="https://bulma.io">
-          GitHub Job
-        </a>
-
-        <a role="button" id="navbar-burger" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="navbar-menu" class="navbar-menu ">
-        <div class="navbar-start">
-          <a class="navbar-item">
-            Discover
-          </a>
-          <a class="navbar-item">
-            Favorite
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-3">
-          <form id="search-job" action="#">
-            <div class="field">
-              <label class="label" >Job Description</label>
-              <div class="control has-icons-left">
-                <input class="input" name="description" type="text" placeholder="Filter by title, benefits, companies, experties">
-                <span class="icon is-small is-left"><i class="fas fa-clipboard"></i></span>
-              </div>
-            </div>
-            <div class="field">
-              <label class="label" >Location</label>
-              <div class="control has-icons-left">
-                <input class="input" name="location" type="text" placeholder="Fiter by city, state, zip code or country">
-                <span class="icon is-smal is-left"><i class="fas fa-globe"></i></span>
-              </div>
-            </div>
-            <div class="field">
-              <div class="control">
-                <label class="checkbox has-text-weight-semibold">
-                  <input type="checkbox" name="full_time" value="full_time">
-                  Full time only
-                </label>
-              </div>
-            </div> 
-            <div class="field is-grouped is-grouped-right">
-              <div class="control">
-                <input type="submit" value="Search" class="button is-light has-text-weight-semibold"/>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="column">
-          <table class="table is-fullwidth positionlist is-loading">
-            <tbody id="job-pannel">
-              
-            </tbody>
-          </table>
-          <nav class="pagination" role="navigation" aria-label="pagination">
-            <a class="pagination-next m-0-auto" disabled>Next page</a>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // task1
-    let burger = document.querySelector('#navbar-burger')
-    let menu = document.querySelector('#navbar-menu')
-
-    burger.addEventListener("click", function(e){
-      e.target.classList.toggle("is-active");
-      menu.classList.toggle("is-active");
-    },false)
-
-    // task2
-    // task3
-    let form = document.forms[0]
-
-    form.addEventListener("submit", function(e){
-      e.preventDefault();
-      let jobDescription = document.querySelector("input[name=description]").value
-      let location = document.querySelector("input[name=location]").value
-      let fullTime = document.querySelector("input[name=full_time]").checked
-
-      let request = `
-      https://still-spire-37210.herokuapp.com/positions.json?description=${jobDescription}&location=${location}&full_time=${fullTime}
-      `
-      let table = document.querySelector("table")
-      
-      fetch(request)
-        .then(function(response) {
-          return response.json();
-        })
-        .then(function(myJson) {
-          console.log(myJson);
-          let tableContent = document.querySelector("#job-pannel")
-          tableContent.innerHTML = ""
-          myJson.map(function(data){
-            tableContent.innerHTML += getTemplate(data)
-          })
-        })
-       
-      function getTemplate(data){
-        return`
-        <tr>
-          <td>
-            <h4><a href="${data.url}">${data.title}</a></h4>
-            <p class="source">
-              <a class="company" href="https://jobs.github.com/companies/gemeente-amsterdam">${data.company}</a>–
-                <strong class="fulltime">${data.type}</strong>
-              </p>
-          </td>
-          <td class="meta">
-            <span class="location">${data.location}</span>
-          </td>
-        </tr>
-        `
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style>
+      table h4{
+        font-weight: bold;
       }
-    })
-  </script>
+      table.positionlist p.source{
+        font-size:12px;
+      }
+      table.positionlist p.source a.company {
+        color: #999;
+        text-decoration: none;
+      } 
+      table.positionlist p.source .fulltime {
+          color: #1d9a00;
+      }
+      table.positionlist .meta {
+        width: 1%;
+        font-size: 12px;
+        white-space: nowrap;
+        padding-left: 30px;
+      }
+      table.positionlist .meta span {
+        display: block;
+        text-align: right;
+        color: #666;
+      }
+      .m-0-auto{
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body onload="getData('https://still-spire-37210.herokuapp.com/positions.json')">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item is-size-4 has-text-weight-semibold" href="https://bulma.io">
+            GitHub Job
+          </a>
+          <a role="button" id="navbar-burger" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
 
-  <!-- <script src="index.js"></script> -->
-  <!-- <script src="job.js"></script> -->
-</body>
+        <div id="navbar-menu" class="navbar-menu ">
+          <div class="navbar-start">
+            <a class="navbar-item">
+              Discover
+            </a>
+            <a class="navbar-item">
+              Favorite
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-3">
+            <form id="search-job" action="#">
+              <div class="field">
+                <label class="label" >Job Description</label>
+                <div class="control has-icons-left">
+                  <input class="input" name="description" type="text" placeholder="Filter by title, benefits, companies, experties">
+                  <span class="icon is-small is-left"><i class="fas fa-clipboard"></i></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label" >Location</label>
+                <div class="control has-icons-left">
+                  <input class="input" name="location" type="text" placeholder="Fiter by city, state, zip code or country">
+                  <span class="icon is-smal is-left"><i class="fas fa-globe"></i></span>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox has-text-weight-semibold">
+                    <input type="checkbox" name="full_time" value="full_time">
+                    Full time only
+                  </label>
+                </div>
+              </div> 
+              <div class="field is-grouped is-grouped-right">
+                <div class="control">
+                  <input type="submit" value="Search" class="button is-light has-text-weight-semibold"/>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="column">
+            <table class="table is-fullwidth positionlist is-loading">
+              <tbody id="job-pannel">
+                
+              </tbody>
+            </table>
+            <nav class="pagination" role="navigation" aria-label="pagination">
+              <a class="pagination-next m-0-auto">Next page</a>
+              <!-- <a class="pagination-next m-0-auto" disabled>Next page</a> -->
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="index.js"></script>
+  </body>
 </html>
