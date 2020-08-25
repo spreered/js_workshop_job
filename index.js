@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const navMenu = document.querySelector("#navbar-menu");
   const search = document.forms[0];
   const table = document.querySelector("#job-pannel");
+  const nextPage = document.querySelector(".pagination-next");
+  let url = "https://still-spire-37210.herokuapp.com/positions.json?";
+  let page = 1;
+
+  getApi(url);
 
   navBurger.addEventListener("click", () => {
     navBurger.classList.toggle("is-active");
@@ -12,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   search.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    let url = "https://still-spire-37210.herokuapp.com/positions.json?";
     const params = {
       job: search.description.value,
       local: search.location.value,
@@ -28,19 +32,35 @@ document.addEventListener("DOMContentLoaded", () => {
       url += "full_time=true";
     }
 
-    fetch(url)
-      .then(response => {
-        let a = response.json();
-        console.log(a);
-        return a;
-      })
-      .then(promise => {
-        table.innerHTML = "";
-        render(promise);
-      });
+    table.innerHTML = "";
+    getApi(url);    
     
     search.reset();
   });
+
+
+
+  function getApi(url) {
+    fetch(url)
+    .then(response => {
+      let a = response.json();
+      console.log(a);
+      return a;
+    })
+    .then(promise => {
+      render(promise);
+      if (promise.length === 50) {
+        nextPage.removeAttribute("disabled");
+        url += `&page=${++page}`;
+
+        nextPage.addEventListener("click", () => {
+          getApi(url);
+        })
+      } else {
+        nextPage.setAttribute("disabled", true);
+      }
+    });
+  }
   
 
 
