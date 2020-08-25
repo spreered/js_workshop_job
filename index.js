@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const search = document.forms[0];
   const table = document.querySelector("#job-pannel");
   const nextPage = document.querySelector(".pagination-next");
-  let url = "https://still-spire-37210.herokuapp.com/positions.json?";
+  let url = "https://js-workshop-5xjobs.herokuapp.com/positions.json?";
   let page = 1;
 
   getApi(url);
