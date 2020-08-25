@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navBurger = document.querySelector("#navbar-burger");
   const navMenu = document.querySelector("#navbar-menu");
   const search = document.forms[0];
+  const table = document.querySelector("#job-pannel");
 
   navBurger.addEventListener("click", () => {
     navBurger.classList.toggle("is-active");
@@ -27,8 +28,37 @@ document.addEventListener("DOMContentLoaded", () => {
       url += "full_time=true";
     }
 
-    fetch(url).then(response => console.log(response.json()));
+    fetch(url)
+      .then(response => {
+        let a = response.json();
+        console.log(a);
+        return a;
+      })
+      .then(promise => {
+        table.innerHTML = "";
+        render(promise);
+      });
     
     search.reset();
   });
+  
+
+
+  function render(promise) {
+    const template = document.querySelector("template");
+    const title = template.content.querySelector("h4 > a");
+    const company = template.content.querySelector(".company");
+    const fulltime = template.content.querySelector(".fulltime");
+    const location = template.content.querySelector(".location");
+
+    promise.forEach((item) => {
+      title.textContent = item.title;
+      company.textContent = item.company;
+      fulltime.textContent = item.type;
+      location.textContent = item.location;
+
+      let clone = document.importNode(template.content, true);
+      table.append(clone);
+    });
+  }
 });
